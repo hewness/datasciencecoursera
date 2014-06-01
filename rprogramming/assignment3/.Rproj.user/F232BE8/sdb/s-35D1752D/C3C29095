@@ -1,0 +1,17 @@
+{
+    "contents" : "best <- function(state, outcome) {\n  ## Read outcome data\n  outcomeData <- read.csv(\"outcome-of-care-measures.csv\", colClasses = \"character\")\n  \n  ## Check that state and outcome are valid\n  stateMatcher <- paste(\"^\", state, \"$\", sep=\"\")\n  if(length(grep(stateMatcher,outcomeData$State, ignore.case=TRUE, value=TRUE)) <= 0) {\n    stop(\"invalid state\")\n  }\n  \n  outcomeData <- subset(outcomeData, State == toupper(state))\n  \n  outcomeMatcher <- paste('^Hospital.30.Day.Death..Mortality..Rates.from.', gsub(\" \", \".\", outcome), '$', sep=\"\")\n  \n  matchedColumn <- grep(outcomeMatcher,colnames(outcomeData), ignore.case=TRUE, value=TRUE)\n  \n  if(length(matchedColumn) <= 0) {\n    stop(\"invalid outcome\")\n  }\n  \n  ## Return hospital name in that state with lowest 30-day death\n  ## rate\n  index <- which.min(outcomeData[,matchedColumn])\n  \n  return(outcomeData[index,]$Hospital.Name)\n}\n\n#best(\"BB\", \"heart attack\")\n#best(\"NY\", \"hert attack\")\n#best(\"N\", \"heart attack\")#\n\n#best(\"TX\", \"heart attack\")\n#best(\"TX\", \"heart failure\")\n#best(\"MD\", \"heart attack\")\n#best(\"MD\", \"pneumonia\")",
+    "created" : 1401658419438.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3784056313",
+    "id" : "C3C29095",
+    "lastKnownWriteTime" : 1401658425,
+    "path" : "~/GitHub/datasciencecoursera/rprogramming/assignment3/best.R",
+    "project_path" : "best.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

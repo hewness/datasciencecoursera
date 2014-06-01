@@ -1,0 +1,16 @@
+{
+    "contents" : "setwd(\"D:\\\\Developer\\\\r-workspace\")\ndata <- read.csv(\"hw1_data.csv\")\nhead(data, 2)\ntail(data, 2)\ndata[47,]\ncolSums(is.na(data))\nozone = data$Ozone\nmean(ozone, na.rm = T)\nnewdata <- subset(data, Ozone > 31 & Temp > 90)\nnewdata\nsolar = newdata$Solar.R\nmean(solar, na.rm = T)\nnewdata2 <- subset(data, Month == 6)\ntemp = newdata2$Temp\nmean(temp, na.rm = T)\n\nnewdata3 <- subset(data, Month == 5)\nozone = newdata3$Ozone\nmax(ozone, na.rm = T)",
+    "created" : 1400436813349.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3841686924",
+    "id" : "2A46B666",
+    "lastKnownWriteTime" : 1389463913,
+    "path" : "D:/Developer/r-workspace/test.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

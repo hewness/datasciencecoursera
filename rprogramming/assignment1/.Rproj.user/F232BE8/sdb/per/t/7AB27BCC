@@ -1,0 +1,17 @@
+{
+    "contents" : "source(\"corr.R\")\nsource(\"complete.R\")\ncr <- corr(\"specdata\", 150)\nhead(cr)\n\nsummary(cr)\n\ncr <- corr(\"specdata\", 400)\nhead(cr)\n\ncr <- corr(\"specdata\", 5000)\nsummary(cr)\n\nlength(cr)\n\ncr <- corr(\"specdata\")\nsummary(cr)\n\nlength(cr)",
+    "created" : 1400441044453.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4181834725",
+    "id" : "7AB27BCC",
+    "lastKnownWriteTime" : 1400441125,
+    "path" : "~/GitHub/datasciencecoursera/rprogramming/assignment1/test_corr.R",
+    "project_path" : "test_corr.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

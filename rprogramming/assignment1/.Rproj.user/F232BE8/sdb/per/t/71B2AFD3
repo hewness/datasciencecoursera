@@ -1,0 +1,17 @@
+{
+    "contents" : "complete <- function(directory, id = 1:332) {\n  \n  completeData <- data.frame()\n  \n  for(i in id)\n  {\n    fileNumber <- formatC(i, width = 3, format = \"d\", flag = \"0\") \n    filePath <- paste(directory, \"\\\\\", fileNumber, \".csv\", sep = \"\")\n    data <- na.omit(read.csv(filePath))\n    completeData <- rbind(completeData, c(i, nrow(data)))\n  }\n  \n  colnames(completeData)[1] = 'id'\n  colnames(completeData)[2] = 'nobs'\n\n  return (completeData)\n}\n\ncomplete(\"specdata\", 1)\n\ncomplete(\"specdata\", c(2, 4, 8, 10, 12))\n\ncomplete(\"specdata\", 30:25)\n\ncomplete(\"specdata\", 3)",
+    "created" : 1400438098801.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "424425686",
+    "id" : "71B2AFD3",
+    "lastKnownWriteTime" : 1400440024,
+    "path" : "~/GitHub/datasciencecoursera/rprogramming/assignment1/complete.R",
+    "project_path" : "complete.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

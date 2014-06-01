@@ -1,0 +1,17 @@
+{
+    "contents" : "rankall <- function(outcome, num = \"best\") {\n  ## Read outcome data\n  outcomeData <- read.csv(\"outcome-of-care-measures.csv\", colClasses = \"character\")\n  \n  outcomeMatcher <- paste('^Hospital.30.Day.Death..Mortality..Rates.from.', gsub(\" \", \".\", outcome), '$', sep=\"\")\n  \n  matchedColumn <- grep(outcomeMatcher,colnames(outcomeData), ignore.case=TRUE, value=TRUE)\n  \n  if(length(matchedColumn) <= 0) {\n    stop(\"invalid outcome\")\n  }\n  \n  ## For each state, find the hospital of the given rank\n  ## Return a data frame with the hospital names and the\n  ## (abbreviated) state name\n  \n  states <- unique(outcomeData$State)\n  states <- states[order(states)]\n  \n  hospitals = c()\n  \n  for (i in 1:length(states) ) {\n    stateOutcomeData <- subset(outcomeData, State == states[i])\n    stateOutcomeData <- stateOutcomeData[order(as.numeric(stateOutcomeData[,matchedColumn]), stateOutcomeData$Hospital.Name, na.last=NA),]\n    \n    if(num == \"best\") {\n      #print(stateOutcomeData[0,]$Hospital.Name)\n      hospitals <- append(hospitals, stateOutcomeData[1,]$Hospital.Name)\n    } else if(num == \"worst\") {\n      hospitals <- append(hospitals, tail(stateOutcomeData,1)$Hospital.Name)\n    } else {\n      hospitals <- append(hospitals, stateOutcomeData[num,]$Hospital.Name)\n    }\n  }\n  \n  #print(length(hospitals))\n  \n  rank <- data.frame(hospitals=hospitals, states=states)\n  colnames(rank)[1] = 'hospital'\n  colnames(rank)[2] = 'state'\n  \n  return(rank)\n}\n\n#head(rankall(\"heart attack\", 20), 10)\n#tail(rankall(\"pneumonia\", \"worst\"), 3)\n#stail(rankall(\"heart failure\"), 10)\n",
+    "created" : 1401661223658.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1970674963",
+    "id" : "3727C552",
+    "lastKnownWriteTime" : 1401663958,
+    "path" : "~/GitHub/datasciencecoursera/rprogramming/assignment3/rankall.R",
+    "project_path" : "rankall.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

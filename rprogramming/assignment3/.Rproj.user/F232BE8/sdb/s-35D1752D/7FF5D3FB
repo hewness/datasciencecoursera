@@ -1,0 +1,16 @@
+{
+    "contents" : "corr <- function(directory, threshold = 0) {\n  \n  completeData <- complete(directory)\n\n  thresholdData <- subset(completeData, nobs >= threshold)\n  \n  corrData <- c()\n  \n  for(i in thresholdData$id)\n  {\n    fileNumber <- formatC(i, width = 3, format = \"d\", flag = \"0\") \n    filePath <- paste(directory, \"\\\\\", fileNumber, \".csv\", sep = \"\")\n    data <- na.omit(read.csv(filePath))\n    #formattedCor = formatC(, format = \"f\", digits = 5) \n    corrData <- c(corrData, cor(data$sulfate, data$nitrate))\n  }\n  \n  return (corrData)\n}",
+    "created" : 1401655572784.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3321357046",
+    "id" : "7FF5D3FB",
+    "lastKnownWriteTime" : 1400442513,
+    "path" : "~/GitHub/datasciencecoursera/rprogramming/assignment1/corr.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
