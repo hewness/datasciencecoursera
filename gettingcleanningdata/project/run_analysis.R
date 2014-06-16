@@ -26,10 +26,10 @@ extractRawData <- function(featuresFile, activityLabelsFile, subjectsFile, xData
   return(rawData)
 }
 
-# Download data file
-dataURL <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
-download.file(dataURL, destfile = "./data.zip", mode = "wb")
-unzip("data.zip")
+# Download data file, uncomment the next three files if you want to download the data
+#dataURL <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
+#download.file(dataURL, destfile = "./data.zip", mode = "wb")
+#unzip("data.zip")
 
 # defining the locations of the data files
 featuresFile <- "UCI HAR Dataset//features.txt"
@@ -71,5 +71,5 @@ names(prunedData) <- descriptiveDataNames
 agg <- aggregate(prunedData, list(Subject = subject, Activity = activity), FUN=mean)
 sortagg <- agg[order(agg$Subject, agg$Activity),]
 
-# Write out data as CSV
-write.table(sortagg, "tidyData.csv", sep=",", quote=FALSE, row.names=FALSE)
+# Write out data as csv but with  a txt extension
+write.table(sortagg, "tidyData.txt", sep="\t", quote=FALSE, row.names=FALSE)
