@@ -3,7 +3,7 @@ README
 
 Objective
 -------------------------
-A group of researches set out to to create a human activity recognition database out of the data recorded from thirty subjects performing different activities while carrying a cell phone with an accelerometer. Out objective is take the raw data that was collected and create a tidy data set.
+A group of researchers set out to to create a human activity recognition database out of the data recorded from thirty subjects performing different activities while carrying a cell phone with an accelerometer. Out objective is take the raw data that was collected and create a tidy data set.
 
 The Data
 -------------------------
